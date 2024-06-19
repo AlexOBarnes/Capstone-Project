@@ -6,7 +6,10 @@ def main():
 
 
 def welcome_message():
-    pass
+    print("--------------------------")
+    print("|   Welcome to Hangman   |")
+    print("--------------------------\n")
+    print("I'm choosing a word... Okay I've got one\n")
 
 
 def word_select():
