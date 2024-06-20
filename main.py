@@ -37,14 +37,10 @@ def word_select():
 def user_guess():
     while True:
         guess = input("\nPlease enter your guess:")
-        try:
-            eval(guess)
+        if len(guess) == 1 and guess.isalpha():
+            return guess.lower()
+        else:
             print("That is not a valid input. Try Again!")
-        except:
-            if len(guess) == 1:
-                return guess.lower()
-            else:
-                print("That is not a valid input. Try Again!")
 
 
 def guess_check(guess, count):
