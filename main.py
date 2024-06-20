@@ -10,7 +10,6 @@ def main():
     is_endgame = False
     global chosen_word
     chosen_word = word_select()
-    print(chosen_word)
     guess_count = 0
     while not is_endgame:
       guess = user_guess()
