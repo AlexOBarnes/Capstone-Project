@@ -3,6 +3,7 @@ from hangman_art import drawing
 from replit import clear
 import time
 
+#Main function that loops to take user inputs until game is over
 def main():
   playing_status = True
   while playing_status == True:
@@ -17,12 +18,14 @@ def main():
       is_endgame = display(chosen_word,guess_count)
     user_choice()
 
+#Prints a welcome message
 def welcome_message():
   print("--------------------------")
   print("|   Welcome to Hangman   |")
   print("--------------------------\n")
   print("I'm choosing a word... Okay I've got one\n")
 
+#This function randomly selects a word from the text file
 def word_select():
   with open("english_dictionary.txt", mode="r") as words:
       word_list = words.readlines()
@@ -32,6 +35,7 @@ def word_select():
   display(chosen_word,guess_count)
   return chosen_word
 
+#Checks to see whether user guess is valid or not
 def user_guess():
   while True:
     guess = input("\nPlease enter your guess:")
@@ -40,6 +44,8 @@ def user_guess():
     else:
       print("That is not a valid input. Try Again!")
 
+#Checks to see if the user guess is present in the word or not
+#Also calls the drawing function to display the hangman
 def guess_check(word,guess,count):
   if guess in word and guess not in guessed_letters:
     print(f"\nNice work! {guess.upper()} is in the word!\n")
@@ -54,6 +60,7 @@ def guess_check(word,guess,count):
     print("\nYou already guessed that letter! Try again!")
     return count
 
+#Function that displays the letters guessed. Calls functions to check if the game is over
 def display(chosen_word,count):
   dash = "___ "
   sentence = []
@@ -71,6 +78,7 @@ def display(chosen_word,count):
     is_lost = lose_check()
   return is_solved or is_lost
 
+#Checks if the user has had 8 wrong guesses to trigger endgame
 def lose_check():
   if len(wrong_letters) == 8:
     print("\nOh no! You have lost!")
@@ -79,6 +87,8 @@ def lose_check():
   else:
     return False
 
+#Checks if the display function has added a dash to sentence, if it 
+#hasn't then all letters have been guessed
 def win_check(dash,sentence,count):
   if dash not in sentence:
     print("Well done! You have won!")
@@ -87,6 +97,7 @@ def win_check(dash,sentence,count):
   else:
     return False
 
+#Function that asks the user if they want to play again or exit
 def user_choice():
   while True:
     choice = input("\nWould you like to play again? (y/n): ")
@@ -103,6 +114,7 @@ def user_choice():
     else:
       print("That is not a valid input. Try Again!")
 
+#Function that asks the user if they want to clear the screen
 def tidy():
   while True:
     tidy_choice = input("Would you like to tidy up the screen? (y/n): ")
@@ -117,6 +129,7 @@ def tidy():
     else:
       print("\nOops! That is not a valid input. Try again!")
 
+#main body of code that calls the welcome message and then main function
 if __name__ == "__main__":
   guessed_letters = []
   wrong_letters = []
