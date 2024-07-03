@@ -61,5 +61,4 @@ def drawing(num, wrong_letters):
         print(f"\nSo far you have made {num} wrong guess")
     elif 1 < num < 8:
         print(f"\nSo far you have made {num} wrong guesses")
-    print(f"The letters you have guessed wrong so far are as follows: {
-          (','.join(wrong_letters)).upper()}\n")
+    print(f"The letters you have guessed wrong so far are as follows: {(','.join(wrong_letters)).upper()}\n")
